@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:annotation-config/>
+
+    <context:component-scan base-package="pl.kodolamacz.workshop"/>
+
+    <import resource="classpath:dao.xml"/>
+
+
+    <!--<context:property-placeholder location="classpath:params.properties"/>-->
+<!--ignore unresolvable classpath: czyli defacto w jarze w czyli w resource-->
+    <!--<import resource="classpath:dao.xml"/>-->
+
+
+    <!--<bean class="pl.com.sages.spring.bootcamp.service.ApplicationService"-->
+          <!--init-method="afterCreate"-->
+          <!--destroy-method="beforeDestroy"-->
+    <!--scope="prototype">-->
+
+        <!--<property name="applicationName" value="${kodolamacz.app.name}"/>-->
+
+            <!--</bean>-->
+
+</beans>
