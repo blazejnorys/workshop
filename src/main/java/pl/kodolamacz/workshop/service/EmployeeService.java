@@ -24,8 +24,16 @@ public class EmployeeService {
         employeeDao.addEmployee(name,surname);
     }
 
+    public void addEmployee(Employee employee){
+        employeeDao.addEmployee(employee);
+    }
+
     public List<Employee> findAllEmployeeBySurname(String employeeSurname){
         return employeeDao.findAllEmployeeBySurname(employeeSurname);
+    }
+
+    public void editEmployeesName(int id, String newName){
+
     }
 
 

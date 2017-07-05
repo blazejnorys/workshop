@@ -2,9 +2,12 @@ package pl.kodolamacz.workshop.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import pl.kodolamacz.workshop.model.Employee;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,36 +23,16 @@ public class EmployeeDaoImpl implements EmployeeDao {
     @Override
     public List<Employee> findAllEmployee(){
         List<Employee> employees = jdbcTemplate.query("SELECT * FROM employee",
-                (resultSet,i) ->{
-                    int id = resultSet.getInt("id");
-                    String name = resultSet.getString("name");
-                    String surname = resultSet.getString("surname");
-
-                    return new Employee(id, name, surname);
-
-                });
+                getRowMapper());
         return employees;
     }
 
     @Override
     public List<Employee> findAllEmployeeBySurname(String employeeSurname) {
-        return null;
+        List<Employee> employees = jdbcTemplate.query("SELECT * FROM employee where surname=?", getRowMapper(), employeeSurname);
+
+        return employees;
     }
-
-
-
-
-//    @Override
-//    public List<Employee> findAllEmployeeBySurname(String employeeSurname){
-//        List<Employee> foundEmployee = new ArrayList<Employee>();
-//        for (Employee employee : employeeList) {
-//            if (employee.getEmployeeSurname().equals(employeeSurname)){
-//                foundEmployee.add(employee);
-//            }
-//
-//        }
-//        return foundEmployee;
-//    }
 
     @Override
     public void addEmployee(String name, String surname){
@@ -58,7 +41,36 @@ public class EmployeeDaoImpl implements EmployeeDao {
     }
 
     @Override
-    public void editEmployee() {
+    public void addEmployee(Employee employee) {
+        String name = employee.getEmployeeName();
+        String surname = employee.getEmployeeSurname();
+        jdbcTemplate.update("INSERT INTO employee (name, surname) VALUES (?,?)",name,surname);
 
     }
+
+    @Override
+    public void editEmployee(int id, String newName) {
+        jdbcTemplate.update("UPDATE INTO employee SET name=? where id=?",newName,id);
+
+    }
+
+
+
+
+
+
+    private RowMapper<Employee> getRowMapper() {
+        return new RowMapper<Employee>() {
+            @Override
+            public Employee mapRow(ResultSet resultSet, int i) throws SQLException {
+                int id = resultSet.getInt("id");
+                String name = resultSet.getString("name");
+                String suname = resultSet.getString("surname");
+
+                return new Employee(id,name,suname);
+            }
+        };
+    }
+
+
 }

@@ -14,5 +14,7 @@ public interface EmployeeDao {
 
     void addEmployee(String name, String surname);
 
-    void editEmployee();
+    void addEmployee(Employee employee);
+
+    void editEmployee(int id,String surname);
 }

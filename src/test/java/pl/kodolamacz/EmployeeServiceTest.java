@@ -35,14 +35,12 @@ public class EmployeeServiceTest extends AbstractTransactionalJUnit4SpringContex
     private JdbcTemplate jdbcTemplate;
 
     @Test
-    public void should_add_employee(){
+    public void should_add_employee() {
         //given
         String employeeName = "Karol";
         String employeeSurname = "Karolkowski";
-
         //when
-        employeeService.addEmployee(employeeName,employeeSurname);
-
+        employeeService.addEmployee(employeeName, employeeSurname);
         //then
         int count = jdbcTemplate.queryForObject("Select count(*) from employee where name like ?",
                 Integer.class, employeeName);
@@ -50,75 +48,66 @@ public class EmployeeServiceTest extends AbstractTransactionalJUnit4SpringContex
     }
 
     @Test
-    public void should_find_employee(){
+    public void should_add_employee_as_object() {
+        //given
+        Employee employee = new Employee("Ziomek", "Ziomkowski");
+        //when
+        employeeService.addEmployee(employee);
+        //then
+        int count = jdbcTemplate.queryForObject("Select count(*) from employee where name like ?",
+                Integer.class, employee.getEmployeeName());
+        Assertions.assertThat(count).isEqualTo(1);
+    }
+
+    @Test
+    public void should_find_all_employee() {
         //given
         //when
-        List<Employee> listactual = employeeService.findAllEmployee();
+        List<Employee> actualList = employeeService.findAllEmployee();
         //then
-        List<Employee> listEmployee = jdbcTemplate.query("Select * from employee", new RowMapper<Employee>() {
-            @Override
-            public Employee mapRow(ResultSet resultSet, int i) throws SQLException {
-                int id = resultSet.getInt("id");
-                String name = resultSet.getString("name");
-                String surname = resultSet.getString("surname");
+        List<Employee> employeeList = jdbcTemplate.query("Select * from employee", getEmployeeRowMapperTest());
+        System.out.println(actualList.size());
+        System.out.println(employeeList.size());
+        Assertions.assertThat(actualList.size()).isEqualTo(employeeList.size());
+    }
 
-                return new Employee(id, name, surname);
-            }
-        });
-        System.out.println(listactual.size());
-        System.out.println(listEmployee.size());
-        Assertions.assertThat(listactual.size()).isEqualTo(listEmployee.size());
 
+    @Test
+    public void should_find_employee_by_surname(){
+        //given
+        List<Employee> actualList = employeeService.findAllEmployeeBySurname("Mietkowski");
+        String surname = "Mietkowski";
+        //when
+        List<Employee> employeeList = jdbcTemplate.query("Select * from employee where surname=?", getEmployeeRowMapperTest(), surname);
+        //then
+
+        Assertions.assertThat(actualList.size()).isEqualTo(employeeList.size());
+
+    }
+
+    @Test
+    public void should_edit_employees_name(){
+        //given
+        String name = "Mieczysław";
+        int getIdMietek = jdbcTemplate.query("Select id from employee where name =?",getEmployeeRowMapperTest(),name);
+        //when
+        employeeService.
 
     }
 
 
 
+    // REMOVE I EDIT
 
 
 
-//    @Test
-//    public void shouldReturnAllWorkers(){
-//        //given
-//        employeeService.addEmployee(employee1);
-//        employeeService.addEmployee(employee2);
-//        //when
-//        List<Employee> actualList=employeeService.findAllEmployee();
-//        //then
-//        assertThat(actualList).isNotNull();
-//        assertThat(actualList.size()).isEqualTo(expectedList.size());
-//
-//
-//
-//    }
-//
-//    @Test
-//    public void shouldAddNewWorker(){
-//        //given
-//        employeeService.addEmployee(employee1);
-//        //when
-//        List<Employee> actualList = employeeService.findAllEmployee();
-//        //then
-//        assertThat(actualList).isNotNull();
-//        assertThat(actualList.size()).isEqualTo(1);
-//
-//    }
-//
-//    @Test
-//    public void shouldFindWorkerBySurname(){
-//        //given
-//        employeeService.addEmployee(employee1);
-//        //employeeService.addEmployee(employee2);
-//        //when
-//        List<Employee> actualList = employeeService.findAllEmployeeBySurname("Mietkowski");
-//        //then
-//        assertThat(actualList.get(0).getEmployeeSurname()).isEqualTo("Mietkowski");
-//
-//
-//    }
-//
-//    @Test
-//    public void shouldEditWorker(){
-//
-//    }
+    private RowMapper<Employee> getEmployeeRowMapperTest() {
+        return (resultSet, i) -> {
+            int id = resultSet.getInt("id");
+            String name = resultSet.getString("name");
+            String surname = resultSet.getString("surname");
+
+            return new Employee(id, name, surname);
+        };
+    }
 }

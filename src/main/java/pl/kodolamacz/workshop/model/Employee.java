@@ -22,6 +22,11 @@ public class Employee {
 
     }
 
+    public Employee(String employeeName, String employeeSurname) {
+        EmployeeName = employeeName;
+        EmployeeSurname = employeeSurname;
+    }
+
     public String getEmployeeName() {
         return EmployeeName;
     }
