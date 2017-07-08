@@ -84,16 +84,16 @@ public class EmployeeServiceTest extends AbstractTransactionalJUnit4SpringContex
         Assertions.assertThat(actualList.size()).isEqualTo(employeeList.size());
 
     }
-
-    @Test
-    public void should_edit_employees_name(){
-        //given
-        String name = "Mieczysław";
-        int getIdMietek = jdbcTemplate.query("Select id from employee where name =?",getEmployeeRowMapperTest(),name);
-        //when
-        employeeService.
-
-    }
+//
+//    @Test
+//    public void should_edit_employees_name(){
+//        //given
+//        String name = "Mieczysław";
+//        int getIdMietek = jdbcTemplate.query("Select id from employee where name =?",getEmployeeRowMapperTest(),name);
+//        //when
+//        employeeService.
+//
+//    }
 
 
 

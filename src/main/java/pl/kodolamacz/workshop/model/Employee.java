@@ -8,8 +8,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class Employee {
     private int id;
-    private String EmployeeName;
-    private String EmployeeSurname;
+    private String employeeName;
+    private String employeeSurname;
 
 
     public Employee() {
@@ -17,29 +17,37 @@ public class Employee {
 
     public Employee(int id, String employeeName, String employeeSurname) {
         this.id = id;
-        EmployeeName = employeeName;
-        EmployeeSurname = employeeSurname;
+        this.employeeName = employeeName;
+        this.employeeSurname = employeeSurname;
 
     }
 
     public Employee(String employeeName, String employeeSurname) {
-        EmployeeName = employeeName;
-        EmployeeSurname = employeeSurname;
+        this.employeeName = employeeName;
+        this.employeeSurname = employeeSurname;
     }
 
     public String getEmployeeName() {
-        return EmployeeName;
+        return employeeName;
     }
 
     public void setEmployeeName(String employeeName) {
-        EmployeeName = employeeName;
+        this.employeeName = employeeName;
     }
 
     public String getEmployeeSurname() {
-        return EmployeeSurname;
+        return employeeSurname;
     }
 
     public void setEmployeeSurname(String employeeSurname) {
-        EmployeeSurname = employeeSurname;
+        this.employeeSurname = employeeSurname;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
