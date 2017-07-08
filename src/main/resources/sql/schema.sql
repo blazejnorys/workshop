@@ -1,12 +1,12 @@
-DROP TABLE IF EXISTS product;
+DROP TABLE IF EXISTS employee;
 
 CREATE TABLE employee (
   id BIGSERIAL NOT NULL PRIMARY KEY,
-  NAME TEXT NOT NULL,
-  SURNAME TEXT NOT NULL
+  employeename TEXT NOT NULL,
+  employeesurname TEXT NOT NULL
 );
 
-INSERT INTO employee (NAME, SURNAME) VALUES ('MIETEK', 'MIETKOWSKI');
-INSERT INTO employee (NAME, SURNAME) VALUES ('KAZEK', 'KAZOWSKI');
-INSERT INTO employee (NAME, SURNAME) VALUES ('BORYS', 'BORYSEWICZ');
-INSERT INTO employee (NAME, SURNAME) VALUES ('OWCZAREK', 'NIEMIECKI');
+INSERT INTO employee (employeename, employeesurname) VALUES ('MIETEK', 'MIETKOWSKI');
+INSERT INTO employee (employeename, employeesurname) VALUES ('KAZEK', 'KAZOWSKI');
+INSERT INTO employee (employeename, employeesurname) VALUES ('BORYS', 'BORYSEWICZ');
+INSERT INTO employee (employeename, employeesurname) VALUES ('OWCZAREK', 'NIEMIECKI');

@@ -1,12 +1,18 @@
-package pl.kodolamacz.workshop.model;
+package pl.kodolamacz.workshop.hibernate.model;
 
 import org.springframework.stereotype.Component;
+
+import javax.persistence.*;
 
 /**
  * Created by Pingwinek on 2017-07-04.
  */
 @Component
+@Entity
 public class Employee {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String employeeName;
     private String employeeSurname;

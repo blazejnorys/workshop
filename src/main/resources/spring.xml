@@ -9,10 +9,14 @@
 
     <context:annotation-config/>
 
-    <context:component-scan base-package="pl.kodolamacz.workshop"/>
+    <context:component-scan base-package="pl.kodolamacz.workshop.hibernate"/>
 
     <import resource="classpath:dao.xml"/>
+    <import resource="hibernate.xml"/>
 
+    <bean class="pl.kodolamacz.workshop.service.EmployeeService">
+
+    </bean>
 
     <!--<context:property-placeholder location="classpath:params.properties"/>-->
 <!--ignore unresolvable classpath: czyli defacto w jarze w czyli w resource-->
