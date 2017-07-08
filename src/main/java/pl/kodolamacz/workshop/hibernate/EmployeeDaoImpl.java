@@ -4,9 +4,11 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import pl.kodolamacz.workshop.hibernate.model.Employee;
+import pl.kodolamacz.workshop.entity.Employee;
 
 import javax.annotation.Resource;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
@@ -14,32 +16,27 @@ import java.util.List;
 /**
  * Created by Pingwinek on 2017-07-04.
  */
-@Repository
-@Transactional
+
 public class EmployeeDaoImpl implements EmployeeDao {
-    
-    @Resource
-    private SessionFactory sessionFactory;
+
+    @PersistenceContext
+    private EntityManager entityManager;
 
     @Override
     public List<Employee> findAllEmployee() {
-        CriteriaBuilder cB = getCurrentSession().getCriteriaBuilder();
-
-        CriteriaQuery<Employee> cQ = cB.createQuery(Employee.class);
-        cQ.from(Employee.class);
-        
-        return getCurrentSession().createQuery(cQ).list();
+        return entityManager
+                .createQuery("select e from Employee e", Employee.class)
+                .getResultList();
     }
-
 
 
     @Override
-    public void addEmployee(Employee employee) {
-        getCurrentSession().persist(employee);
+    public Employee addEmployee(Employee employee) {
+        entityManager.persist(employee);
+        entityManager.flush();
+        entityManager.refresh(employee);
+        return employee;
 
     }
 
-    private Session getCurrentSession() {
-        return sessionFactory.getCurrentSession();
-    }
 }

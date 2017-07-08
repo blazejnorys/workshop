@@ -1,4 +1,4 @@
-package pl.kodolamacz.workshop.hibernate.model;
+package pl.kodolamacz.workshop.entity;
 
 import org.springframework.stereotype.Component;
 

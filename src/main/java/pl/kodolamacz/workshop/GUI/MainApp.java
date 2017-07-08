@@ -1,10 +1,10 @@
 package pl.kodolamacz.workshop.GUI;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javassist.ClassPath;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import pl.kodolamacz.workshop.hibernate.model.Employee;
-import pl.kodolamacz.workshop.service.EmployeeService;
+import pl.kodolamacz.workshop.entity.Employee;
+import pl.kodolamacz.workshop.repository.EmployeeService;
 
 import java.util.List;
 
@@ -15,15 +15,16 @@ public class MainApp {
     public static void main(String[] args) {
 
 
-        AbstractApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring.xml");
+        try (ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring.xml")) {
 
-        EmployeeService employeeService = applicationContext.getBean(EmployeeService.class);
-        List<Employee> employees = employeeService.findAllEmployee();
+            EmployeeService employeeService = applicationContext.getBean(EmployeeService.class);
 
-        for (Employee employee : employees) {
-            System.out.println(employee.getEmployeeName());
+            List<Employee> employees = employeeService.findAllEmployee();
+
+            for (Employee employee : employees) {
+                System.out.println(employee.getEmployeeName());
+            }
 
         }
-
     }
 }

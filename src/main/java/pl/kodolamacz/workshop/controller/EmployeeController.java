@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import pl.kodolamacz.workshop.hibernate.model.Employee;
-import pl.kodolamacz.workshop.service.EmployeeService;
+import pl.kodolamacz.workshop.entity.Employee;
+import pl.kodolamacz.workshop.repository.EmployeeService;
 
 import javax.validation.Valid;
 

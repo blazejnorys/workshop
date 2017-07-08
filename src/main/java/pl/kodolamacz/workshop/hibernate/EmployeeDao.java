@@ -1,6 +1,6 @@
 package pl.kodolamacz.workshop.hibernate;
 
-import pl.kodolamacz.workshop.hibernate.model.Employee;
+import pl.kodolamacz.workshop.entity.Employee;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ public interface EmployeeDao {
 
     //void addEmployee(String name, String surname);
 
-    void addEmployee(Employee employee);
+    Employee addEmployee(Employee employee);
 
     //void editEmployee(int id,String surname);
 }

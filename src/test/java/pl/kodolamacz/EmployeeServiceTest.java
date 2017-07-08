@@ -9,8 +9,8 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import pl.kodolamacz.workshop.hibernate.model.Employee;
-import pl.kodolamacz.workshop.service.EmployeeService;
+import pl.kodolamacz.workshop.entity.Employee;
+import pl.kodolamacz.workshop.repository.EmployeeService;
 
 import java.util.List;
 
@@ -54,19 +54,19 @@ public class EmployeeServiceTest extends AbstractTransactionalJUnit4SpringContex
                 Integer.class, employee.getEmployeeName());
         Assertions.assertThat(count).isEqualTo(1);
     }
-
-    @Test
-    public void should_find_all_employee() {
-        //given
-        //when
-        List<Employee> actualList = employeeService.findAllEmployee();
-        //then
-        List<Employee> employeeList = jdbcTemplate.query("Select * from employee", getEmployeeRowMapperTest());
-        System.out.println(actualList.size());
-        System.out.println(employeeList.size());
-        Assertions.assertThat(actualList.size()).isEqualTo(employeeList.size());
-    }
-
+//
+//    @Test
+//    public void should_find_all_employee() {
+//        //given
+//        //when
+//        List<Employee> actualList = employeeService.findAllEmployee();
+//        //then
+//        List<Employee> employeeList = jdbcTemplate.query("Select * from employee", getEmployeeRowMapperTest());
+//        System.out.println(actualList.size());
+//        System.out.println(employeeList.size());
+//        Assertions.assertThat(actualList.size()).isEqualTo(employeeList.size());
+//    }
+//
 
 //    @Test
 //    public void should_find_employee_by_surname(){

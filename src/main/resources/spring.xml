@@ -1,35 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
-       http://www.springframework.org/schema/beans/spring-beans.xsd
-       http://www.springframework.org/schema/context
-       http://www.springframework.org/schema/context/spring-context.xsd">
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="user" value="${spring.jdbc.username}"/>
+        <property name="password" value="${spring.jdbc.password}"/>
+        <property name="jdbcUrl" value="${spring.jdbc.url}"/>
+        <property name="driverClass" value="${spring.jdbc.driverClassName}"/>
+        <property name="minPoolSize" value="10"/>
+        <property name="maxPoolSize" value="20"/>
+        <property name="maxIdleTime" value="50000"/>
+    </bean>
 
     <context:annotation-config/>
 
-    <context:component-scan base-package="pl.kodolamacz.workshop.hibernate"/>
-
-    <import resource="classpath:dao.xml"/>
-    <import resource="hibernate.xml"/>
-
-    <bean class="pl.kodolamacz.workshop.service.EmployeeService">
-
+    <bean id="entityManagerFactory"
+          class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="packagesToScan" value="pl.kodolamacz.workshop.entity" />
+        <property name="jpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+                <property name="showSql" value="false" />
+                <property name="databasePlatform" value="org.hibernate.dialect.PostgreSQLDialect" />
+            </bean>
+        </property>
+        <property name="jpaProperties">
+            <props>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+            </props>
+        </property>
+    </bean>
+    <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+    <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
     </bean>
 
-    <!--<context:property-placeholder location="classpath:params.properties"/>-->
-<!--ignore unresolvable classpath: czyli defacto w jarze w czyli w resource-->
-    <!--<import resource="classpath:dao.xml"/>-->
+    <bean id="employeeService" class="pl.kodolamacz.workshop.repository.EmployeeService">
+        <constructor-arg name="employeeDao" ref="employeeDao"/>
+    </bean>
 
-
-    <!--<bean class="pl.com.sages.spring.bootcamp.service.ApplicationService"-->
-          <!--init-method="afterCreate"-->
-          <!--destroy-method="beforeDestroy"-->
-    <!--scope="prototype">-->
-
-        <!--<property name="applicationName" value="${kodolamacz.app.name}"/>-->
-
-            <!--</bean>-->
-
+    <bean id="employeeDao" class="pl.kodolamacz.workshop.hibernate.EmployeeDaoImpl"/>
 </beans>

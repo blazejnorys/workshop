@@ -10,7 +10,7 @@
     <context:component-scan base-package="pl.kodolamacz.workshop.hibernate"/>
 
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="location" value="classpath:dao.properties"/>
+        <property name="location" value="classpath:jdbc.properties"/>
         <property name="ignoreUnresolvablePlaceholders" value="true"/>
         <property name="systemPropertiesMode" value="2"/>
     </bean>

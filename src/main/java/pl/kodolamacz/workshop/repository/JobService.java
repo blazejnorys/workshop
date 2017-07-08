@@ -1,4 +1,4 @@
-package pl.kodolamacz.workshop.service;
+package pl.kodolamacz.workshop.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
