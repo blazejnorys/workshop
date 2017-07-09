@@ -41,9 +41,9 @@
         <property name="entityManagerFactory" ref="entityManagerFactory" />
     </bean>
 
-    <bean id="employeeService" class="pl.kodolamacz.workshop.repository.EmployeeService">
+    <bean id="employeeService" class="pl.kodolamacz.workshop.service.EmployeeService">
         <constructor-arg name="employeeDao" ref="employeeDao"/>
     </bean>
 
-    <bean id="employeeDao" class="pl.kodolamacz.workshop.hibernate.EmployeeDaoImpl"/>
+    <bean id="employeeDao" class="pl.kodolamacz.workshop.service.repository.EmployeeDaoImpl"/>
 </beans>

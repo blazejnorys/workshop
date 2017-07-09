@@ -1,10 +1,8 @@
 package pl.kodolamacz.workshop.GUI;
 
-import javassist.ClassPath;
-import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import pl.kodolamacz.workshop.entity.Employee;
-import pl.kodolamacz.workshop.repository.EmployeeService;
+import pl.kodolamacz.workshop.service.EmployeeService;
 
 import java.util.List;
 

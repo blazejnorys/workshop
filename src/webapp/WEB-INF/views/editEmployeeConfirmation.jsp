@@ -6,7 +6,7 @@
 </head>
 <body>
 <p>
-    New employee has been added with given details name ${employee.employeeName} and surname ${employee.employeeSurname}
+    Employee has been edited with new given details name ${employee.employeeName} and surname ${employee.employeeSurname}
 </p>
 <a href="/">Main menu</a>
 </body>

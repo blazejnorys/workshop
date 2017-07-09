@@ -1,20 +1,17 @@
-package pl.kodolamacz.workshop.repository;
+package pl.kodolamacz.workshop.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import pl.kodolamacz.workshop.hibernate.EmployeeDao;
 import pl.kodolamacz.workshop.entity.Employee;
-import pl.kodolamacz.workshop.hibernate.EmployeeDaoImpl;
+import pl.kodolamacz.workshop.service.repository.EmployeeDao;
 
-import javax.validation.Constraint;
 import java.util.List;
 
 /**
  * Created by Pingwinek on 2017-07-04.
  */
-
+@Service
+@Transactional
 public class EmployeeService {
 
 
@@ -24,13 +21,28 @@ public class EmployeeService {
         return employeeDao.findAllEmployee();
     }
 
+    public Employee findEmployeeById(int id){return employeeDao.findEmployeeById(id);}
+
     public void addEmployee(Employee employee){
         employeeDao.addEmployee(employee);
     }
 
+    public void editEmployeeName(int id, String name){
+        employeeDao.changeEmployeeName(id,name);
+    }
+
+    public void editEmployeeSurname(int id, String surname){
+        employeeDao.changeEmployeeSurname(id,surname);
+    }
+
+
+
+
+
     public EmployeeService(EmployeeDao employeeDao) {
         this.employeeDao = employeeDao;
     }
+
 }
 
 

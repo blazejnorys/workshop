@@ -2,19 +2,19 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <html>
 <head>
-    <title>Workshop</title>
+    <title>Workshop/employees</title>
 </head>
 <body>
-<h1><s:message code="index.title"/></h1>
+<h1><s:message code="indexEmployee.title"/></h1>
 <ul>
     <li>
-        <a href="employee-index.html">
-            Employees
+        <a href="show-employees.html">
+            <s:message code="index.showEmployees"/>
         </a>
     </li>
     <li>
-        <a href="customer.html">
-            Customers
+        <a href="add-employee.html">
+            Add new employee
         </a>
     </li>
 </ul>

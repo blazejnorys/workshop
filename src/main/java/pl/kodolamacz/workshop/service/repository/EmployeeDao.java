@@ -1,4 +1,4 @@
-package pl.kodolamacz.workshop.hibernate;
+package pl.kodolamacz.workshop.service.repository;
 
 import pl.kodolamacz.workshop.entity.Employee;
 
@@ -10,11 +10,11 @@ import java.util.List;
 public interface EmployeeDao {
     List<Employee> findAllEmployee();
 
-   // List<Employee> findAllEmployeeBySurname(String employeeSurname);
-
-    //void addEmployee(String name, String surname);
+    Employee findEmployeeById(int Id);
 
     Employee addEmployee(Employee employee);
 
-    //void editEmployee(int id,String surname);
+    void changeEmployeeName(int id, String name);
+
+    void changeEmployeeSurname(int id, String surname);
 }

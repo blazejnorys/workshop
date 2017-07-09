@@ -1,9 +1,9 @@
-package pl.kodolamacz.workshop.repository;
+package pl.kodolamacz.workshop.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import pl.kodolamacz.workshop.dao.*;
-import pl.kodolamacz.workshop.hibernate.EmployeeDao;
+import pl.kodolamacz.workshop.service.repository.EmployeeDao;
 
 /**
  * Created by Pingwinek on 2017-07-04.

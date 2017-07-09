@@ -1,18 +1,17 @@
-package pl.kodolamacz.workshop.repository;
+package pl.kodolamacz.workshop.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import pl.kodolamacz.workshop.dao.CustomerDao;
+import pl.kodolamacz.workshop.dao.WarehouseDao;
 
 /**
  * Created by Pingwinek on 2017-07-04.
  */
 @Component
-public class CustomerService {
+public class WarehouseService {
 
     @Autowired
-    CustomerDao customerDao;
+    WarehouseDao warehouseDao;
+
+
 }
-
-
-

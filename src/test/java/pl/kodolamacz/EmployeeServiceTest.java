@@ -10,9 +10,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import pl.kodolamacz.workshop.entity.Employee;
-import pl.kodolamacz.workshop.repository.EmployeeService;
-
-import java.util.List;
+import pl.kodolamacz.workshop.service.EmployeeService;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.extractProperty;

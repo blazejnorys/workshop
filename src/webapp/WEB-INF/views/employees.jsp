@@ -3,18 +3,40 @@
 <%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
-    <title></title>
+    <title>Workshop/employee</title>
+    <style>
+        table {
+            width:60%;
+        }
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 5px;
+            text-align: left;
+        }
+        table#t01 tr:nth-child(even) {
+            background-color: #eee;
+        }
+        table#t01 tr:nth-child(odd) {
+            background-color:#fff;
+        }
+        table#t01 th {
+            background-color: black;
+            color: white;
+        }
+    </style>
 </head>
 <body>
-<table>
-    <thead>
+<table id="t01">
+
     <tr>
-        <th>Lp.</th>
+        <th>No.</th>
         <th>Id</th>
-        <th>Imię</th>
-        <th>Nazwisko</th>
+        <th>Name</th>
+        <th>Surname</th>
     </tr>
-    </thead>
     <tbody>
     <c:forEach items="${employees}" var="employee" varStatus="status">
         <tr>
@@ -22,11 +44,18 @@
             <td>${employee.id}</td>
             <td>${employee.employeeName}</td>
             <td>${employee.employeeSurname}</td>
-
+            <td><a href="edit-employee.html?id=${employee.id}">Edit</a></td>
+            <%--<td>--%>
+                <%--<form action="edit-employee.html?id=${employee.id}">--%>
+                    <%--<input type ="submit" value="Edit"/>--%>
+                <%--</form>--%>
+            <%--</td>--%>
         </tr>
     </c:forEach>
     </tbody>
 </table>
-<a href="/">Menu głowne</a>
+<p>
+<a href="/">Main menu</a>
+</p>
 </body>
 </html>
