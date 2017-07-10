@@ -20,7 +20,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
     @Override
     public List<Employee> findAllEmployee() {
         return entityManager
-                .createQuery("select e from Employee e", Employee.class)
+                .createQuery("select e from Employee e order by e.id", Employee.class)
                 .getResultList();
     }
 
@@ -42,19 +42,21 @@ public class EmployeeDaoImpl implements EmployeeDao {
     }
 
     @Override
-    public void changeEmployeeName(int id, String name) {
+    public void changeEmployeeDetails(int id, String name, String surname) {
+        Employee employeeById = findEmployeeById(id);
+        employeeById.setEmployeeName(name);
+        employeeById.setEmployeeSurname(surname);
         entityManager
-                .createQuery("update Employee set employeeName=:name where id=:id")
-                .setParameter("name",name)
-                .setParameter("id",id);
+                .persist(employeeById);
 
     }
 
     @Override
-    public void changeEmployeeSurname(int id, String surname) {
+    public void removeEmployee(int id) {
+        Employee employeeById=findEmployeeById(id);
         entityManager
-                .createQuery("update Employee set emplyeeSurname=:surname where id=:id")
-                .setParameter("surname",surname)
-                .setParameter("id",id);
+                .remove(employeeById);
+
     }
+
 }

@@ -1,5 +1,6 @@
 package pl.kodolamacz.workshop.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.kodolamacz.workshop.entity.Employee;
@@ -14,7 +15,6 @@ import java.util.List;
 @Transactional
 public class EmployeeService {
 
-
     private EmployeeDao employeeDao;
 
     public List<Employee> findAllEmployee(){
@@ -27,13 +27,14 @@ public class EmployeeService {
         employeeDao.addEmployee(employee);
     }
 
-    public void editEmployeeName(int id, String name){
-        employeeDao.changeEmployeeName(id,name);
+    public void editEmployeeDetails(int id, String name, String surname){
+        employeeDao.changeEmployeeDetails(id,name,surname);
     }
 
-    public void editEmployeeSurname(int id, String surname){
-        employeeDao.changeEmployeeSurname(id,surname);
+    public void removeEmployee(int id){
+        employeeDao.removeEmployee(id);
     }
+
 
 
 

@@ -13,7 +13,7 @@
         </a>
     </li>
     <li>
-        <a href="customer.html">
+        <a href="customer-index.html">
             Customers
         </a>
     </li>

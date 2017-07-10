@@ -3,7 +3,7 @@
 <%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
-    <title>Workshop/employee</title>
+    <title><s:message code="indexEmployee.title"/></title>
     <style>
         table {
             width:60%;
@@ -45,7 +45,9 @@
             <td>${employee.employeeName}</td>
             <td>${employee.employeeSurname}</td>
             <td><a href="edit-employee.html?id=${employee.id}">Edit</a></td>
-            <%--<td>--%>
+            <td><a href="remove-employee.html?id=${employee.id}">Remove</a></td>
+
+        <%--<td>--%>
                 <%--<form action="edit-employee.html?id=${employee.id}">--%>
                     <%--<input type ="submit" value="Edit"/>--%>
                 <%--</form>--%>

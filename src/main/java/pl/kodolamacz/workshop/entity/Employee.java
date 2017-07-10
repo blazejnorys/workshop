@@ -1,8 +1,10 @@
 package pl.kodolamacz.workshop.entity;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 
 /**
  * Created by Pingwinek on 2017-07-04.
@@ -14,7 +16,11 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Pattern (regexp="[a-zA-Z]+")
+    @NotEmpty
     private String employeeName;
+    @Pattern (regexp="[a-zA-Z]+")
+    @NotEmpty
     private String employeeSurname;
 
 

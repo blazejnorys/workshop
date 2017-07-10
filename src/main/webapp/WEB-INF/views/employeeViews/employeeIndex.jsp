@@ -2,7 +2,7 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <html>
 <head>
-    <title>Workshop/employees</title>
+    <title><s:message code="indexEmployee.title"/></title>
 </head>
 <body>
 <h1><s:message code="indexEmployee.title"/></h1>

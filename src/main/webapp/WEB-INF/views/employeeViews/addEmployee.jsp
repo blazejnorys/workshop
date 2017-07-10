@@ -2,20 +2,20 @@
 <%@ taglib prefix="f" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
-    <title>Workshop/employee</title>
+    <title>Add employee</title>
 </head>
 <body>
 <h1>Add new employee</h1>
 <f:form method="post" modelAttribute="employee">
     <p>
         Name:<f:input path="employeeName"/>
-         <p>
+         <p style="color:#ff0000;font-weight:bold">
             <f:errors path="employeeName"/>
         </p>
     </p>
     <p>
         Surname:<f:input path="employeeSurname"/>
-        <p>
+        <p style="color:#ff0000;font-weight:bold">
             <f:errors path="employeeSurname"/>
         </p>
     </p>

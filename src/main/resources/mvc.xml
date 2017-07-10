@@ -8,6 +8,7 @@
 
     <mvc:annotation-driven/>
     <context:component-scan base-package="pl.kodolamacz.workshop.controller"/>
+    <context:component-scan base-package="pl.kodolamacz.workshop.rest"/>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/views/"/>
