@@ -10,7 +10,7 @@ import java.util.List;
 public interface EmployeeDao {
     List<Employee> findAllEmployee();
 
-    Employee findEmployeeById(int Id);
+    Employee findEmployeeById(int id);
 
     Employee addEmployee(Employee employee);
 

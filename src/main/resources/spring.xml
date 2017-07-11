@@ -44,6 +44,10 @@
     <bean id="employeeService" class="pl.kodolamacz.workshop.service.EmployeeService">
         <constructor-arg name="employeeDao" ref="employeeDao"/>
     </bean>
+    <bean id="customerService" class="pl.kodolamacz.workshop.service.CustomerService">
+        <constructor-arg name="customerDao" ref="customerDao"/>
+    </bean>
 
     <bean id="employeeDao" class="pl.kodolamacz.workshop.service.repository.EmployeeDaoImpl"/>
+    <bean id="customerDao" class="pl.kodolamacz.workshop.service.repository.CustomerDaoImpl"/>
 </beans>

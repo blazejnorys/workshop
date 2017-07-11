@@ -25,10 +25,10 @@ public class EmployeeDaoImpl implements EmployeeDao {
     }
 
     @Override
-    public Employee findEmployeeById(int Id) {
+    public Employee findEmployeeById(int id) {
         return entityManager
                 .createQuery("select e from Employee e where id=:id",Employee.class)
-                .setParameter("id",Id)
+                .setParameter("id",id)
                 .getSingleResult();
     }
 

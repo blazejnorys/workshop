@@ -14,13 +14,13 @@ public class RestControllerTest {
     final String BASE_URL = "http://localhost:8080/spring";
     RestTemplate restTemplate = new RestTemplate();
 
-    @Test
-    public void should_add_employee(){
-        //given
-        Employee employee = new Employee(0,"fazowski","fazowki");
-        //when
-        String response = restTemplate.postForObject(BASE_URL + "/rest/save", employee, String.class);
-        //then
-        Assertions.assertThat(response).contains("fazowski");
-    }
+//    @Test
+//    public void should_add_employee(){
+//        //given
+//        Employee employee = new Employee(0,"fazowski","fazowki");
+//        //when
+//        String response = restTemplate.postForObject(BASE_URL + "/rest/save", employee, String.class);
+//        //then
+//        Assertions.assertThat(response).contains("fazowski");
+//    }
 }

@@ -2,6 +2,7 @@ package pl.kodolamacz.workshop.model;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import pl.kodolamacz.workshop.entity.Customer;
 import pl.kodolamacz.workshop.entity.Employee;
 
 /**
