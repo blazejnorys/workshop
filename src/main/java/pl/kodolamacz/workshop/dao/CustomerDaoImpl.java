@@ -1,4 +1,4 @@
-package pl.kodolamacz.workshop.service.repository;
+package pl.kodolamacz.workshop.dao;
 
 import org.springframework.stereotype.Repository;
 import pl.kodolamacz.workshop.entity.Customer;

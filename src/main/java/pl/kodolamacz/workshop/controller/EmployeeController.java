@@ -2,15 +2,13 @@ package pl.kodolamacz.workshop.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import pl.kodolamacz.workshop.entity.Employee;
 import pl.kodolamacz.workshop.service.EmployeeService;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 public class EmployeeController {
@@ -75,12 +73,19 @@ public class EmployeeController {
         return modelAndView;
     }
 
-
-
-
-    public EmployeeService getEmployeeService() {
-        return employeeService;
+    //FIND EMPLOYEE BY SURNAME POST LIST
+    @PostMapping(value = "find-employee-surname.html")
+    public ModelAndView showEmployeeBySurnameDetailsList(@ModelAttribute Employee employee) {
+        List<Employee> employeeList = employeeService.findEmployeeBySurnameList(employee.getEmployeeSurname());
+        return new ModelAndView("employeeViews/findEmployeeBySurnameDetails","employees",employeeList);
     }
+
+    //FIND EMPLOYEE BY SURNAME GET
+    @GetMapping(value ="find-employee-surname.html" )
+    public ModelAndView showEmployeeBySurnameForm() {
+        return new ModelAndView("employeeViews/findEmployeeBySurname","employee", new Employee());
+    }
+
 
     public void setEmployeeService(EmployeeService employeeService) {
         this.employeeService = employeeService;

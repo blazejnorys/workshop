@@ -1,4 +1,4 @@
-package pl.kodolamacz.workshop.service.repository;
+package pl.kodolamacz.workshop.dao;
 
 import pl.kodolamacz.workshop.entity.Employee;
 
@@ -11,6 +11,11 @@ public interface EmployeeDao {
     List<Employee> findAllEmployee();
 
     Employee findEmployeeById(int id);
+
+    Employee findEmployeeBySurname(String surname);
+
+    List<Employee> findEmployeeBySurnameList(String surname);
+
 
     Employee addEmployee(Employee employee);
 

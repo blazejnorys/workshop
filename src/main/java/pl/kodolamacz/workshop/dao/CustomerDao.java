@@ -1,4 +1,4 @@
-package pl.kodolamacz.workshop.service.repository;
+package pl.kodolamacz.workshop.dao;
 
 import pl.kodolamacz.workshop.entity.Customer;
 import pl.kodolamacz.workshop.entity.Employee;

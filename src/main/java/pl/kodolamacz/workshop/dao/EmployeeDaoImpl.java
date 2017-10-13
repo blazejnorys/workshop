@@ -1,7 +1,5 @@
-package pl.kodolamacz.workshop.service.repository;
+package pl.kodolamacz.workshop.dao;
 
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import pl.kodolamacz.workshop.entity.Employee;
 
 import javax.persistence.EntityManager;
@@ -30,6 +28,20 @@ public class EmployeeDaoImpl implements EmployeeDao {
                 .createQuery("select e from Employee e where id=:id",Employee.class)
                 .setParameter("id",id)
                 .getSingleResult();
+    }
+
+    @Override
+    public Employee findEmployeeBySurname(String surname){
+        return entityManager.createQuery("select e from Employee e where employeesurname=:surname",Employee.class)
+                .setParameter("surname",surname)
+                .getSingleResult();
+    }
+
+    @Override
+    public List<Employee> findEmployeeBySurnameList(String surname) {
+        return entityManager.createQuery("select e from Employee e where employeesurname=:surname",Employee.class)
+                .setParameter("surname",surname)
+                .getResultList();
     }
 
     @Override

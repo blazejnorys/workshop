@@ -5,6 +5,7 @@
        xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
+    <context:annotation-config/>
     <context:property-placeholder location="classpath:jdbc.properties"/>
 
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
@@ -17,7 +18,6 @@
         <property name="maxIdleTime" value="50000"/>
     </bean>
 
-    <context:annotation-config/>
 
     <bean id="entityManagerFactory"
           class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
@@ -26,7 +26,7 @@
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
                 <property name="showSql" value="true" />
-                <property name="databasePlatform" value="org.hibernate.dialect.PostgreSQLDialect" />
+                <property name="databasePlatform" value="org.hibernate.dialect.PostgreSQL95Dialect" />
             </bean>
         </property>
         <property name="jpaProperties">
@@ -35,8 +35,10 @@
             </props>
         </property>
     </bean>
+
     <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
     <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="entityManagerFactory" />
     </bean>
@@ -48,6 +50,6 @@
         <constructor-arg name="customerDao" ref="customerDao"/>
     </bean>
 
-    <bean id="employeeDao" class="pl.kodolamacz.workshop.service.repository.EmployeeDaoImpl"/>
-    <bean id="customerDao" class="pl.kodolamacz.workshop.service.repository.CustomerDaoImpl"/>
+    <bean id="employeeDao" class="pl.kodolamacz.workshop.dao.EmployeeDaoImpl"/>
+    <bean id="customerDao" class="pl.kodolamacz.workshop.dao.CustomerDaoImpl"/>
 </beans>

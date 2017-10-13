@@ -14,7 +14,12 @@
     </li>
     <li>
         <a href="add-employee.html">
-            Add new employee
+            <s:message code="indexAddNewEmployee"/>
+        </a>
+    </li>
+    <li>
+        <a href="find-employee-surname.html">
+            <s:message code="indexFindEmployeeBySurname"/>
         </a>
     </li>
 </ul>

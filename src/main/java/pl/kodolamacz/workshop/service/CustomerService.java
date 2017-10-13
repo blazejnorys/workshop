@@ -1,11 +1,9 @@
 package pl.kodolamacz.workshop.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.kodolamacz.workshop.entity.Customer;
-import pl.kodolamacz.workshop.service.repository.CustomerDao;
+import pl.kodolamacz.workshop.dao.CustomerDao;
 
 import java.util.List;
 
