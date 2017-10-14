@@ -28,12 +28,18 @@ public class Customer {
     @Pattern (regexp = "\\w+")
     @NotEmpty
     private String car;
-    @NotEmpty
-    @Pattern (regexp = "[0-9]+")
+//    @NotEmpty
+//    @Pattern (regexp = "[0-9]+")
     private int phonenumber;
 
+    public Customer(String customerName, String customerSurname, String car, int phonenumber) {
+        CustomerName = customerName;
+        CustomerSurname = customerSurname;
+        this.car = car;
+        this.phonenumber = phonenumber;
+    }
 
-    public Customer(int id,String customerName, String customerSurname, String car, int phonenumber) {
+    public Customer(int id, String customerName, String customerSurname, String car, int phonenumber) {
         this.id=id;
         CustomerName = customerName;
         CustomerSurname = customerSurname;

@@ -2,31 +2,33 @@ package pl.kodolamacz.workshop.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pl.kodolamacz.workshop.dao.*;
 import pl.kodolamacz.workshop.dao.CustomerDao;
 import pl.kodolamacz.workshop.dao.EmployeeDao;
+import pl.kodolamacz.workshop.entity.Job;
+
+import java.beans.Transient;
+import java.util.List;
 
 /**
  * Created by Pingwinek on 2017-07-04.
  */
-@Component
+@Service
+@Transactional
 public class JobService {
 
-    @Autowired
-    JobDao jobDao;
 
-    @Autowired
-    CustomerDao customerDao;
+    private JobDao jobDao;
 
-    @Autowired
-    EmployeeDao employeeDao;
+    public List<Job> findAllJobs(){
+        return jobDao.findAllJobs();
+    }
 
-    @Autowired
-    PartDao partDao;
+    public JobService(JobDao jobDao) {
+        this.jobDao = jobDao;
+    }
 
-    @Autowired
-    ServiceDao serviceDao;
 
-    @Autowired
-    WarehouseDao warehouseDao;
 }

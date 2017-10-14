@@ -49,7 +49,11 @@
     <bean id="customerService" class="pl.kodolamacz.workshop.service.CustomerService">
         <constructor-arg name="customerDao" ref="customerDao"/>
     </bean>
+    <bean id="jobService" class="pl.kodolamacz.workshop.service.JobService">
+        <constructor-arg name="jobDao" ref="jobDao"/>
+    </bean>
 
+    <bean id="jobDao" class="pl.kodolamacz.workshop.dao.JobDaoImpl"/>
     <bean id="employeeDao" class="pl.kodolamacz.workshop.dao.EmployeeDaoImpl"/>
     <bean id="customerDao" class="pl.kodolamacz.workshop.dao.CustomerDaoImpl"/>
 </beans>
