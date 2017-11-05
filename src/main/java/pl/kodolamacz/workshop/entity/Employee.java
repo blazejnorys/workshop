@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
+import java.util.List;
 
 /**
  * Created by Pingwinek on 2017-07-04.
@@ -23,6 +24,10 @@ public class Employee {
     @NotEmpty
     private String employeeSurname;
 
+    @ManyToMany(mappedBy = "employeeList")
+    private List<Job> jobList;
+
+
 
     public Employee() {
     }
@@ -37,6 +42,15 @@ public class Employee {
     public Employee(String employeeName, String employeeSurname) {
         this.employeeName = employeeName;
         this.employeeSurname = employeeSurname;
+    }
+
+
+    public List<Job> getJobList() {
+        return jobList;
+    }
+
+    public void setJobList(List<Job> jobList) {
+        this.jobList = jobList;
     }
 
     public String getEmployeeName() {

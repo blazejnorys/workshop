@@ -36,7 +36,11 @@ public class MainApp {
             employeeList.add(employee2);
             customersList.add(customer1);
             customersList.add(customer2);
-            Job job = new Job("JobOne",employeeList,customersList);
+            Job job = new Job();
+            job.setJobName("JobTestowy");
+            job.setCustomerList(customersList);
+            job.setEmployeeList(employeeList);
+
 
             entityManager.getTransaction().begin();
             entityManager.persist(employee1);

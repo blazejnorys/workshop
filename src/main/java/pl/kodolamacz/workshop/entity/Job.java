@@ -26,11 +26,10 @@ public class Job {
     @Pattern(regexp="[a-zA-Z]+")
     private String jobName;
 
-    @NotEmpty
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Employee> employeeList;
 
-    @NotEmpty
+
     @LazyCollection(LazyCollectionOption.FALSE)
     @ManyToMany
     private List<Customer> customerList;
@@ -43,6 +42,8 @@ public class Job {
         this.employeeList = employeeList;
         this.customerList = customerList;
     }
+
+
 
     public long getId() {
         return id;

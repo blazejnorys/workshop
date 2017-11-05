@@ -3,11 +3,9 @@ package pl.kodolamacz.workshop.entity;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.stereotype.Component;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Pattern;
+import java.util.List;
 
 /**
  * Created by Pingwinek on 2017-07-04.
@@ -28,9 +26,12 @@ public class Customer {
     @Pattern (regexp = "\\w+")
     @NotEmpty
     private String car;
-//    @NotEmpty
-//    @Pattern (regexp = "[0-9]+")
     private int phonenumber;
+
+    @ManyToMany(mappedBy = "customerList")
+    private List<Job> jobList;
+
+
 
     public Customer(String customerName, String customerSurname, String car, int phonenumber) {
         CustomerName = customerName;
@@ -49,6 +50,14 @@ public class Customer {
     }
 
     public Customer() {
+    }
+
+    public List<Job> getJobList() {
+        return jobList;
+    }
+
+    public void setJobList(List<Job> jobList) {
+        this.jobList = jobList;
     }
 
     public String getCustomerName() {

@@ -26,9 +26,10 @@ public class JobService {
         return jobDao.findAllJobs();
     }
 
+    public Job addNewJob(Job job){return jobDao.addJob(job);}
+
     public JobService(JobDao jobDao) {
         this.jobDao = jobDao;
     }
-
 
 }
